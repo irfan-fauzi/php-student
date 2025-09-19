@@ -1,3 +1,8 @@
+<?php
+  $id = $_GET["id"];
+  echo $id;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +11,6 @@
   <title>Document</title>
 </head>
 <body>
-  <h1>phpbasic</h1>
-  <a href="./src/index.php">Aplikasi Php</a>
+  <h1>Edit</h1>
 </body>
 </html>

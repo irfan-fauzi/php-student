@@ -6,7 +6,6 @@
   <title>Document</title>
 </head>
 <body>
-  <h1>phpbasic</h1>
-  <a href="./src/index.php">Aplikasi Php</a>
+  <h1>Add </h1>
 </body>
 </html>

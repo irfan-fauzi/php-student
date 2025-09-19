@@ -3,7 +3,7 @@
 
   require './utils/config.php'; // menghubungkan ke database
   $getAllMahasiswa = require './utils/query.php'; // menghubungkan ke query.php
-  
+
   $mahasiswa = $getAllMahasiswa($conn); // memanggil fungsi getAllMahasiswa dari query.php
   $conn->close(); // menutup koneksi ke database
   
@@ -68,8 +68,8 @@
            <td><?= $mhs["jurusan"]; ?></td>
            <td><img src="<?= $mhs["foto"]; ?>" alt="<?= $mhs["nama"]; ?>"></td>
            <td>
-             <a href="/edit" class=" px-4 py-2 bg-blue-200 hover:bg-blue-400">edit</a>
-             <a href="/delete" class="text-white px-4 py-2 bg-red-400 hover:bg-red-700">delete</a>
+             <a href="edit.php?id=<?= $mhs['id']; ?>" class=" px-4 py-2 bg-blue-200 hover:bg-blue-400">edit</a>
+             <a href="delete.php?id=<?= $mhs['id']; ?>" class="text-white px-4 py-2 bg-red-400 hover:bg-red-700">delete</a>
            </td>
          </tr>
          <?php endforeach; ?>
