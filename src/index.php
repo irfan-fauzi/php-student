@@ -65,16 +65,16 @@
            <td><?= $mhs["nama"]; ?></td>
            <td><?= $mhs["email"]; ?></td>
            <td><?= $mhs["jurusan"]; ?></td>
-           <td><img src="<?= $mhs["foto"]; ?>" alt="<?= $mhs["nama"]; ?>"></td>
+           <td><img src="<?= $mhs["foto"]; ?>" alt="<?= $mhs["foto"]; ?>"></td>
            <td>
-             <a href="edit.php?id=<?= $mhs['id']; ?>" class=" px-4 py-2 bg-blue-200 hover:bg-blue-400">edit</a>
-             <a href="delete.php?id=<?= $mhs['id']; ?>" class="text-white px-4 py-2 bg-red-400 hover:bg-red-700">delete</a>
+             <a href="editPage.php?id=<?= $mhs['id']; ?>" class=" px-4 py-2 bg-blue-200 hover:bg-blue-400">edit</a>
+             <a href="deletePage.php?id=<?= $mhs['id']; ?>" class="text-white px-4 py-2 bg-red-400 hover:bg-red-700">delete</a>
            </td>
          </tr>
          <?php endforeach; ?>
        </tbody>
      </table>
-      <a href="add.php" class="bg-blue-500 text-xl text-white mt-10 px-5 py-3 inline-block hover:bg-blue-700 rounded-md">Add Mahasiswa</a>
+      <a href="addPage.php" class="bg-blue-500 text-xl text-white mt-10 px-5 py-3 inline-block hover:bg-blue-700 rounded-md">Add Mahasiswa</a>
    </section>
   
  </body>

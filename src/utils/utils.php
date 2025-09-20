@@ -7,8 +7,5 @@
     $mahasiswa = $result->fetch_assoc();
     $stmt->close();
     return $mahasiswa ?: null;
-};
-
-return $getMahasiswaById;
-
+  };
 ?>
