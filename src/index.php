@@ -1,9 +1,8 @@
  
  <?php
 
-  require './utils/config.php'; // menghubungkan ke database
+  $conn = require './utils/config.php'; // menghubungkan ke database
   $getAllMahasiswa = require './utils/query.php'; // menghubungkan ke query.php
-
   $mahasiswa = $getAllMahasiswa($conn); // memanggil fungsi getAllMahasiswa dari query.php
   $conn->close(); // menutup koneksi ke database
   
@@ -75,7 +74,9 @@
          <?php endforeach; ?>
        </tbody>
      </table>
+      <a href="add.php" class="bg-blue-500 text-xl text-white mt-10 px-5 py-3 inline-block hover:bg-blue-700 rounded-md">Add Mahasiswa</a>
    </section>
+  
  </body>
 
 
