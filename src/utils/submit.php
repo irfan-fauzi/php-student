@@ -17,6 +17,15 @@
     // tidak langsung berisi data, tapi menunggu bind_param.
     $stmt->bind_param("sssss", $nrp, $nama, $email, $jurusan, $foto);
     $stmt->execute();
+    
+    // cek apakah ada data yang ditambah?
+    if ($stmt->affected_rows === 0) {
+      echo "Gagal menghapus: ID tidak ditemukan!";
+      $stmt->close();
+      $conn->close();
+      exit();
+    }
+
     $stmt->close();
 
     // redirect ke index.php
