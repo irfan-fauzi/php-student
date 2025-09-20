@@ -8,4 +8,5 @@
     $stmt->close();
     return $mahasiswa ?: null;
   };
+  return $getMahasiswaById;
 ?>

@@ -58,9 +58,10 @@
        </thead>
        <tbody>
          <?php
-        foreach ($mahasiswa as $mhs) : ?>
+         $no = 1;
+         foreach ($mahasiswa as $mhs) : ?>
          <tr>
-           <td><?= $mhs["id"]; ?></td>
+           <td><?= $no++ ?></td>
            <td><?= $mhs["nrp"]; ?></td>
            <td><?= $mhs["nama"]; ?></td>
            <td><?= $mhs["email"]; ?></td>

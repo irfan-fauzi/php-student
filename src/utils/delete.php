@@ -1,49 +1,35 @@
 <?php
-include 'config.php'; // Include file koneksi
+include 'config.php';
 
-// Dapatkan ID dari parameter URL (misal: hapus_data.php?id=123)
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
+ if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_POST['id'])) {
+    echo 'Error';
+    exit();
+  } 
     $id = $_POST['id'];
     $sql = "DELETE FROM mahasiswa WHERE id = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $id);
-  if ($stmt->execute()) {
-    header("Location: ../index.php");
-    exit();
-  } else {
-    echo "Gagal menghapus data" . $stmt->error;
-  }
-  $stmt->close();
+    $stmt = $conn->prepare($sql); // Query akan dikompilasi dan diparsing oleh server sebelum parameter dimasukkan, sehingga mencegah SQL injection.
+
+    if(!$stmt){
+      echo "error: " . $conn->error; // $conn dari config.php
+      $conn->close();
+      exit();
+    }
+
+    $stmt->bind_param("i", $id); // Ini adalah cara untuk mengisi placeholder ? di query dengan nilai variabel. "i" menandakan tipe data dari parameter:
+    $stmt->execute(); // Ini adalah perintah untuk menjalankan query yang sudah disiapkan dengan parameter yang sudah diisi sebelumnya.
+
+
+    // Cek apakah ada baris yang terhapus atau apakah benar id yang dikirim ada di database
+    if ($stmt->affected_rows === 0) {
+      echo "Gagal menghapus: ID tidak ditemukan!";
+      $stmt->close();
+      $conn->close();
+      exit();
 }
 
-$conn->close();
+    $stmt->close(); // Menutup statement MySQL yang sudah dipakai (dari prepare()).
+    $conn->close(); // 
+    header("Location: ../index.php");
+    exit()
 
-
-//     // Persiapan statement SQL untuk mencegah SQL injection
-//     $sql = "DELETE FROM nama_tabel WHERE id = ?"; // Ganti nama_tabel dengan nama tabel Anda
-//     $stmt = $conn->prepare($sql);
-
-//     // Bind parameter (menghubungkan variabel ke placeholder)
-//     // "i" menandakan bahwa ID adalah integer
-//     $stmt->bind_param("i", $id);
-
-//     // Jalankan statement
-//     if ($stmt->execute()) {
-//         echo "Data berhasil dihapus!";
-//         // Redirect ke halaman index.php setelah 1 detik
-//         header("Location: index.php");
-//         exit(); // Pastikan script berhenti setelah redirect
-//     } else {
-//         echo "Kesalahan saat menghapus data: " . $stmt->error;
-//     }
-
-//     // Tutup statement
-//     $stmt->close();
-// } else {
-//     echo "ID tidak tersedia.";
-// }
-
-// // Tutup koneksi database
-// $conn->close();
-// 
 ?>
