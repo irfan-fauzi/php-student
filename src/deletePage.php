@@ -31,7 +31,7 @@
             <p><strong>Jurusan: </strong><?= $detail['jurusan'] ?></p>
           </div>
         <form method="POST" action="./utils/delete.php" class="flex justify-between">
-            <input type="hidden" name="id" value="<?= 12 ?>">
+            <input type="hidden" name="id" value="<?= $detail['id'] ?>">
             <button type="submit" name="confirm_delete" 
                 class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition">
                 Hapus

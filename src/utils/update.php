@@ -7,11 +7,11 @@
   }
   
   $id = (int)$_POST["id"];
-  $nrp = $_POST["nrp"];
-  $nama = $_POST["nama"];
-  $email = $_POST["email"];
-  $jurusan = $_POST["jurusan"];
-  $foto = $_POST["foto"];
+  $nrp = htmlspecialchars($_POST["nrp"]) ?? '';
+  $nama = htmlspecialchars($_POST["nama"]) ?? '';
+  $email = htmlspecialchars($_POST["email"]) ?? '';
+  $jurusan = htmlspecialchars($_POST["jurusan"]) ?? '';
+  $foto = htmlspecialchars($_POST["foto"]) ?? '';
 
   $sql = "UPDATE mahasiswa SET nrp = ?, nama = ?, email = ?, jurusan = ?, foto = ? WHERE id = ?";
   $stmt = $conn->prepare($sql);

@@ -1,11 +1,11 @@
 <?php
   $conn = require 'config.php';
   
-  $nrp = $_POST["nrp"] ?? '';
-  $nama = $_POST["nama"] ?? '';
-  $email = $_POST["email"] ?? '';
-  $jurusan = $_POST["jurusan"] ?? '';
-  $foto = $_POST["foto"] ?? '';
+  $nrp = htmlspecialchars($_POST["nrp"]) ?? '';
+  $nama = htmlspecialchars($_POST["nama"]) ?? '';
+  $email = htmlspecialchars($_POST["email"]) ?? '';
+  $jurusan = htmlspecialchars($_POST["jurusan"]) ?? '';
+  $foto = htmlspecialchars($_POST["foto"]) ?? '';
 
   if (!$nrp || !$nama || !$email || !$jurusan || !$foto) {
     echo 'data tidak lengkap';
